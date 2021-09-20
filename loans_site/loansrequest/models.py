@@ -25,6 +25,7 @@ class Loan(models.Model):
     email = models.EmailField()
     monto = models.PositiveIntegerField()
     aprobado = models.BooleanField(default=False)
+    fecha = models.DateTimeField(default=timezone.now)
 
     def request_loan(self):
         pass
