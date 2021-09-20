@@ -54,4 +54,4 @@ Thumbs.db
 #Other
 .vscode/
 /venv
-**/__pycache__
+**/__pycache__/
