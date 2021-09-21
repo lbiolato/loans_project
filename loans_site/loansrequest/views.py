@@ -19,7 +19,7 @@ def loan_application(request):
     return render(request, 'loansrequest/loan_application.html',{'form': form})
 
 def loans_list(request):
-    loans = Loan.objects.all().order_by('fecha')
+    loans = Loan.objects.all().order_by('date')
     return render(request, 'loansadministration/loans_list.html',{'loans': loans})
 
 def loans_edition(request, pk):
@@ -31,7 +31,7 @@ def loans_edition(request, pk):
             return HttpResponseRedirect("/accounts/loans")
     else:
         form = LoanEditForm(instance=loan)
-    return render(request, 'loansadministration/loans_edition.html',{'form': form, 'loandate': loan.fecha})
+    return render(request, 'loansadministration/loans_edition.html',{'form': form, 'loandate': loan.date})
 
 def delete_item(request, pk):
     item = Loan.objects.get(pk=pk)

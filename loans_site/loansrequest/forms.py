@@ -7,26 +7,26 @@ class LoanForm(forms.ModelForm):
     class Meta:
         model = Loan
         fields = (
-            "nombre",
-            "apellido",
+            "first_name",
+            "last_name",
             "dni",
-            "genero",
-            "edad",
+            "gender",
+            "age",
             "email",
-            "monto",
+            "amount",
         )
 
     def clean(self):
         super(LoanForm, self).clean()
 
-        nombre = self.cleaned_data.get("nombre")
-        apellido = self.cleaned_data.get("apellido")
+        first_name = self.cleaned_data.get("first_name")
+        last_name = self.cleaned_data.get("last_name")
 
-        if not nombre.isalpha():
-            self._errors['nombre'] = self.error_class(['El nombre insertado no es válido'])
+        if not first_name.isalpha():
+            self._errors['first_name'] = self.error_class(['Name is not valid.'])
 
-        if not apellido.isalpha():
-            self._errors['apellido'] = self.error_class(['El apellido insertado no es válido'])
+        if not last_name.isalpha():
+            self._errors['last_name'] = self.error_class(['Last name is not valid.'])
 
         return self.cleaned_data
 
@@ -35,26 +35,26 @@ class LoanEditForm(forms.ModelForm):
     class Meta:
         model = Loan
         fields = (
-            "nombre",
-            "apellido",
+            "first_name",
+            "last_name",
             "dni",
-            "genero",
-            "edad",
+            "gender",
+            "age",
             "email",
-            "monto",
-            "aprobado",
+            "amount",
+            "approved",
         )
 
     def clean(self):
         super(LoanEditForm, self).clean()
 
-        nombre = self.cleaned_data.get("nombre")
-        apellido = self.cleaned_data.get("apellido")
+        first_name = self.cleaned_data.get("first_name")
+        last_name = self.cleaned_data.get("last_name")
 
-        if not nombre.isalpha():
-            self._errors['nombre'] = self.error_class(['El nombre insertado no es válido'])
+        if not first_name.isalpha():
+            self._errors['first_name'] = self.error_class(['Name is not valid.'])
 
-        if not apellido.isalpha():
-            self._errors['apellido'] = self.error_class(['El apellido insertado no es válido'])
+        if not last_name.isalpha():
+            self._errors['last_name'] = self.error_class(['Last name is not valid.'])
 
         return self.cleaned_data

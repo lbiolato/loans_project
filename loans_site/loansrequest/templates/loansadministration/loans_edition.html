@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar prestamo</title>
+    <title>Edit loan</title>
 </head>
 <body>
     <div>
         <h2>
-            Editar prestamo
+            Edit loan
         </h2>
         <form method="POST" id='form'>{% csrf_token %}
             {{ form.as_p }}
             <div>
-                Prestamo registrado {{loandate}}
+                Submission date {{loandate}}
             </div>
             <div>
-                <button type="submit">Editar</button>
+                <button type="submit">Edit</button>
             </div>
             {% if messages %}
                 {% for message in messages %}

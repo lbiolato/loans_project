@@ -8,24 +8,24 @@ from localflavor.ar.forms import ARDNIField
 
 class Loan(models.Model):
     GENDER_CHOICES = (
-        ("M", "Masculino"),
-        ("F", "Femenino"),
-        ("NB", "No Binario"),
-        ("O", "Otro"),
+        ("M", "Male"),
+        ("F", "Female"),
+        ("NB", "Non-binary"),
+        ("O", "Other"),
     )
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     dni = models.PositiveIntegerField(
         validators=[MinValueValidator(1000000), MaxValueValidator(70000000)]
     )
-    genero = models.CharField(max_length=2, choices=GENDER_CHOICES)
-    edad = models.PositiveIntegerField(
+    gender = models.CharField(max_length=2, choices=GENDER_CHOICES)
+    age = models.PositiveIntegerField(
         validators=[MinValueValidator(18), MaxValueValidator(120)]
     )
     email = models.EmailField()
-    monto = models.PositiveIntegerField()
-    aprobado = models.BooleanField(default=False)
-    fecha = models.DateTimeField(default=timezone.now)
+    amount = models.PositiveIntegerField()
+    approved = models.BooleanField(default=False)
+    date = models.DateTimeField(default=timezone.now)
 
     def request_loan(self):
         pass

@@ -11,19 +11,19 @@
         <a href="{% url 'logout' %}">LOGOUT</a>
         <table>
             <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Monto</th>
-                <th>Aprobado</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Amount</th>
+                <th>Approved</th>
             </tr>
             {% for loan in loans %}
                 <tr>
-                    <td>{{loan.nombre}}</td>
-                    <td>{{loan.apellido}}</td>
-                    <td>{{loan.monto}}</td>
-                    <td>{{loan.aprobado}}</td>
-                    <td><a href="{% url 'loans_edition' pk=loan.pk %}">Editar</a></td>
-                    <td><a href="{%url 'delete_item' pk=loan.pk %}">Borrar</a></td>
+                    <td>{{loan.first_name}}</td>
+                    <td>{{loan.last_name}}</td>
+                    <td>{{loan.amount}}</td>
+                    <td>{{loan.approved}}</td>
+                    <td><a href="{% url 'loans_edition' pk=loan.pk %}">Edit</a></td>
+                    <td><a href="{%url 'delete_item' pk=loan.pk %}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
