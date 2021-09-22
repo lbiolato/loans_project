@@ -3,6 +3,10 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import LoanForm, LoanEditForm
 from .models import Loan
+import requests
+
+ROOT_ENDPOINT = f"https://api.moni.com.ar/api/v4/scoring/pre-score/"
+HEADER = {"credential": ""}
 
 
 def loan_application(request):
@@ -10,9 +14,15 @@ def loan_application(request):
         form = LoanForm(request.POST)
         if form.is_valid():
             loan = form.save(commit=False)
-            loan.aprobado = True
+            endpoint = f"{ROOT_ENDPOINT}{loan.dni}"
+            appr = requests.get(url=endpoint, headers=HEADER)
+            if appr.json()['status']=='approve':
+                loan.approved = True
+                messages.success(request, 'Loan approved.')
+            else:
+                loan.approved = False
+                messages.error(request, 'Loan denied.')
             loan.save()
-            messages.success(request, 'Su prestamo fue aprobado.')
             return HttpResponseRedirect("/")
     else:
         form = LoanForm()

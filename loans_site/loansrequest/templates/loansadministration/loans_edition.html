@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit loan</title>
-</head>
-<body>
+{% extends 'loansadministration/base.html' %}
+{% block content %}
     <div>
         <h2>
             Edit loan
@@ -17,7 +10,7 @@
                 Submission date {{loandate}}
             </div>
             <div>
-                <button type="submit">Edit</button>
+                <button type="submit" class="save btn btn-default">Edit</button>
             </div>
             {% if messages %}
                 {% for message in messages %}
@@ -26,5 +19,4 @@
             {% endif %}
         </form>
     </div>
-</body>
-</html>
+{% endblock %}
