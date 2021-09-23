@@ -14,7 +14,7 @@ COPY ./loans_site /app/loans_site
 
 # CMD ["python", "loans_site/manage.py", "runserver", "0.0.0.0:8000"]
 
-CMD python loans_site/manage.py migrate \
-    && python loans_site/manage.py initadmin \
-    && python loans_site/manage.py runserver 0.0.0.0:8000 --noreload
+# CMD python loans_site/manage.py migrate \
+#     && python loans_site/manage.py initadmin \
+#     && python loans_site/manage.py runserver 0.0.0.0:8000 --noreload
 
