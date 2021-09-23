@@ -12,11 +12,12 @@ To validate loans, it is necessary to hit an endpoint that requires credentials.
 - Replace correctPassword with the required credential. 
 
 ## Running the app
-
-foo@bar:rootdir/\$ docker-compose build
-
-foo@bar:rootdir/\$ docker-compose up
-
+``` bash
+docker-compose build
+```
+``` bash
+docker-compose up
+```
 ## Accessing the site:
 - Loans application form is at localhost:8000 
 - Login site is at localhost:8000/accounts/login
