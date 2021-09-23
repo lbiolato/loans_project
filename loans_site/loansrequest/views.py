@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from requests.api import get
 from .forms import LoanForm, LoanEditForm
 from .models import Loan
-import requests
+from .services import moni_client
 
 ROOT_ENDPOINT = f"https://api.moni.com.ar/api/v4/scoring/pre-score/"
 HEADER = {"credential": ""}
@@ -14,13 +15,10 @@ def loan_application(request):
         form = LoanForm(request.POST)
         if form.is_valid():
             loan = form.save(commit=False)
-            endpoint = f"{ROOT_ENDPOINT}{loan.dni}"
-            appr = requests.get(url=endpoint, headers=HEADER)
-            if appr.json()['status']=='approve':
-                loan.approved = True
+            loan.approved = moni_client.validate_loan(loan.dni)
+            if loan.approved:
                 messages.success(request, 'Loan approved.')
             else:
-                loan.approved = False
                 messages.error(request, 'Loan denied.')
             loan.save()
             return HttpResponseRedirect("/")

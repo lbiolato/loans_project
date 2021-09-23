@@ -3,7 +3,6 @@ from django.db import models
 from django.db.models.fields import IntegerField
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
-from localflavor.ar.forms import ARDNIField
 
 
 class Loan(models.Model):
@@ -26,6 +25,3 @@ class Loan(models.Model):
     amount = models.PositiveIntegerField()
     approved = models.BooleanField(default=False)
     date = models.DateTimeField(default=timezone.now)
-
-    def request_loan(self):
-        pass

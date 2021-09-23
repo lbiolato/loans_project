@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'loansrequest.apps.LoansrequestConfig',
-    'localflavor',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +80,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'project',
+#         'USER': 'project',
+#         'PASSWORD': 'secret',
+#         'HOST': 'db',
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation
@@ -127,3 +137,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/accounts/loans/'
+
+ADMINS = (
+    ('admin', 'admin@mysite.com'),
+)
