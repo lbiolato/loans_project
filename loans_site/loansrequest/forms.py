@@ -22,11 +22,14 @@ class LoanForm(forms.ModelForm):
         first_name = self.cleaned_data.get("first_name")
         last_name = self.cleaned_data.get("last_name")
 
-        if not first_name.isalpha():
+        if not first_name.replace(" ", "").isalpha():
             self._errors['first_name'] = self.error_class(['Name is not valid.'])
 
-        if not last_name.isalpha():
+        if not last_name.replace(" ", "").isalpha():
             self._errors['last_name'] = self.error_class(['Last name is not valid.'])
+
+        self.cleaned_data["first_name"] = self.cleaned_data["first_name"].strip().title()
+        self.cleaned_data["last_name"] = self.cleaned_data["last_name"].strip().title()
 
         return self.cleaned_data
 

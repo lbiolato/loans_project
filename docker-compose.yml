@@ -3,18 +3,12 @@ version: "3.6"
 services:
   django:
     build: .
-    # volumes:
-    #   - ./loans_site/:/app/loans_site/
-    # environment:
-    #   API_PASS: 
     env_file:
       - .env
     ports:
       - 8000:8000
     depends_on:
       - db
-    # entrypoint: python loans_site/manage.py migrate 
-    # command: python loans_site/manage.py runserver 0.0.0.0:8000 --noreload
 
   db:
     image: "postgres:13"
